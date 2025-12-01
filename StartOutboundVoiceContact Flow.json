@@ -1,0 +1,354 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "9df9edbb-83ff-42bf-8bac-35353b0de924",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -260,
+      "y": 0
+    },
+    "ActionMetadata": {
+      "9df9edbb-83ff-42bf-8bac-35353b0de924": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "8d91563b-5dc6-43c4-ab47-b940251aa11a": {
+        "position": {
+          "x": 280,
+          "y": 0
+        },
+        "parameters": {
+          "TextToSpeechVoice": {
+            "languageCode": "cmn-CN"
+          }
+        },
+        "overrideConsoleVoice": true
+      },
+      "4a58c60b-dfa7-4540-845f-215520b92d68": {
+        "position": {
+          "x": 280,
+          "y": 260
+        }
+      },
+      "317f1179-7406-4352-b099-48e701912a4b": {
+        "position": {
+          "x": 0,
+          "y": 260
+        },
+        "dynamicParams": []
+      },
+      "75c00855-31b3-480a-bac8-dd27e5fb71f9": {
+        "position": {
+          "x": 0,
+          "y": 520
+        }
+      },
+      "681f510c-6c45-446d-9500-3c881125e295": {
+        "position": {
+          "x": 840,
+          "y": 260
+        }
+      },
+      "ff374a8c-15ec-4965-be2d-c1679b6e5435": {
+        "position": {
+          "x": 840,
+          "y": 0
+        },
+        "parameters": {
+          "SSML": {
+            "useDynamic": true
+          }
+        },
+        "useDynamic": true
+      },
+      "4304c9b9-2515-4bcc-9ee9-f507691fcd07": {
+        "position": {
+          "x": 1680,
+          "y": 260
+        }
+      },
+      "2ce12cf7-d4bf-4749-806e-26d2dce5b1af": {
+        "position": {
+          "x": 1120,
+          "y": 0
+        },
+        "conditionMetadata": [
+          {
+            "id": "5c68542c-70c1-4fda-8a3d-d97bae19702b",
+            "value": "1"
+          },
+          {
+            "id": "3dc768ec-3818-43ca-95ae-fac96d461eb3",
+            "value": "2"
+          }
+        ]
+      },
+      "054cfb54-42e1-4397-9e81-54df67106891": {
+        "position": {
+          "x": 280,
+          "y": 520
+        }
+      },
+      "54993fc4-322a-401a-9a69-02750cd88ea8": {
+        "position": {
+          "x": 1624.8,
+          "y": -6.4
+        }
+      },
+      "ff711d7c-c7fd-4925-bd67-226fdd2bdeb7": {
+        "position": {
+          "x": 1400,
+          "y": 0
+        },
+        "dynamicParams": []
+      }
+    },
+    "Annotations": [],
+    "name": "StartOutboundVoiceContact Alert Flow - CN",
+    "description": "定制AlertMessage内容通知",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "9df9edbb-83ff-42bf-8bac-35353b0de924",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "4a58c60b-dfa7-4540-845f-215520b92d68"
+      }
+    },
+    {
+      "Parameters": {
+        "TextToSpeechVoice": "Zhiyu",
+        "TextToSpeechEngine": "Neural",
+        "TextToSpeechStyle": "None"
+      },
+      "Identifier": "8d91563b-5dc6-43c4-ab47-b940251aa11a",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "317f1179-7406-4352-b099-48e701912a4b"
+      }
+    },
+    {
+      "Parameters": {
+        "RecordingBehavior": {
+          "RecordedParticipants": [],
+          "IVRRecordingBehavior": "Enabled"
+        },
+        "AnalyticsBehavior": {
+          "Enabled": "True",
+          "AnalyticsLanguage": "zh-CN",
+          "AnalyticsRedactionBehavior": "Disabled",
+          "AnalyticsRedactionResults": "None",
+          "ChannelConfiguration": {
+            "Chat": {
+              "AnalyticsModes": []
+            },
+            "Voice": {
+              "AnalyticsModes": [
+                "AutomatedInteraction"
+              ]
+            }
+          },
+          "SentimentConfiguration": {
+            "Enabled": "True"
+          }
+        }
+      },
+      "Identifier": "4a58c60b-dfa7-4540-845f-215520b92d68",
+      "Type": "UpdateContactRecordingBehavior",
+      "Transitions": {
+        "NextAction": "8d91563b-5dc6-43c4-ab47-b940251aa11a"
+      }
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "AlertReceived": "true"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "317f1179-7406-4352-b099-48e701912a4b",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "75c00855-31b3-480a-bac8-dd27e5fb71f9",
+        "Errors": [
+          {
+            "NextAction": "75c00855-31b3-480a-bac8-dd27e5fb71f9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SSML": "<speak><break time=\"3s\"/></speak>"
+      },
+      "Identifier": "75c00855-31b3-480a-bac8-dd27e5fb71f9",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "054cfb54-42e1-4397-9e81-54df67106891",
+        "Errors": [
+          {
+            "NextAction": "054cfb54-42e1-4397-9e81-54df67106891",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SSML": "<speak><break time=\"1s\"/></speak>"
+      },
+      "Identifier": "681f510c-6c45-446d-9500-3c881125e295",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "2ce12cf7-d4bf-4749-806e-26d2dce5b1af",
+        "Errors": [
+          {
+            "NextAction": "2ce12cf7-d4bf-4749-806e-26d2dce5b1af",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "SSML": "$.Attributes.alertMessage"
+      },
+      "Identifier": "ff374a8c-15ec-4965-be2d-c1679b6e5435",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "681f510c-6c45-446d-9500-3c881125e295",
+        "Errors": [
+          {
+            "NextAction": "2ce12cf7-d4bf-4749-806e-26d2dce5b1af",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "60",
+        "Text": "收到请按1.如需重复收听，请按2。结束请挂机。"
+      },
+      "Identifier": "2ce12cf7-d4bf-4749-806e-26d2dce5b1af",
+      "Type": "GetParticipantInput",
+      "Transitions": {
+        "NextAction": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+        "Conditions": [
+          {
+            "NextAction": "ff711d7c-c7fd-4925-bd67-226fdd2bdeb7",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          },
+          {
+            "NextAction": "054cfb54-42e1-4397-9e81-54df67106891",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "2"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LoopCount": "2"
+      },
+      "Identifier": "054cfb54-42e1-4397-9e81-54df67106891",
+      "Type": "Loop",
+      "Transitions": {
+        "NextAction": "ff711d7c-c7fd-4925-bd67-226fdd2bdeb7",
+        "Conditions": [
+          {
+            "NextAction": "ff374a8c-15ec-4965-be2d-c1679b6e5435",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ContinueLooping"
+              ]
+            }
+          },
+          {
+            "NextAction": "ff711d7c-c7fd-4925-bd67-226fdd2bdeb7",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "DoneLooping"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "感谢接听，再见。"
+      },
+      "Identifier": "54993fc4-322a-401a-9a69-02750cd88ea8",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+        "Errors": [
+          {
+            "NextAction": "4304c9b9-2515-4bcc-9ee9-f507691fcd07",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "AlertReceived": "true"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "ff711d7c-c7fd-4925-bd67-226fdd2bdeb7",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "54993fc4-322a-401a-9a69-02750cd88ea8",
+        "Errors": [
+          {
+            "NextAction": "54993fc4-322a-401a-9a69-02750cd88ea8",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
